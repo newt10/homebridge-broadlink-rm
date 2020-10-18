@@ -40,7 +40,7 @@ Add under the data section of the fan accessory in config.json as shown in the c
 | stepSize | Increments of fan speed. This will update Home app UI so that fan speed increases in steps. If your fan support 4 speeds and the step size should be 100/4 = 25. | 25 | 1 |
 
 ##### Combined fan speed and swing modes
-Some fans (e.g. Lasko tower fan) with remotes that have a display, generate unique hex codes for a combination of each speed and swing mode. If you has such a device, you can record each hex code in the config.json as shown below.
+Some fans (e.g. Lasko tower fan) with remotes that have a display, generate unique hex codes for a combination of each speed and swing mode. If you have such a device, you can record each hex code in the config.json as shown below.
 
 config.json
 ```
