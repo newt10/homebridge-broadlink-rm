@@ -78,7 +78,7 @@ oscillation and fan speed.
 
 In addition to the fan speed and oscillation features, this accessory also supports temperature in both degree Celsius and Fahrenheit.
 
-<img src="https://j.gifs.com/7149ly.gif" alt="Home app heater cooler UI in action" width="150"/>
+<img src="https://j.gifs.com/vlVRR0.gif" alt="Home app heater cooler UI in action" width="150"/>
 
 For more details on how to configure a heater-cooler accessory please review the documentation [here](https://github.com/newt10/homebridge-broadlink-rm-enhanced/blob/master/docs/heater-cooler.md) and review [config-sample.json](https://github.com/newt10/homebridge-broadlink-rm-enhanced/blob/master/config-sample.json) for sample configurations.
 
