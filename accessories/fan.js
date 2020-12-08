@@ -12,9 +12,10 @@ class FanAccessory extends SwitchAccessory {
     }
 
     // Reset the fan speed back to the default speed when turned off
-    if (this.state.switchState === false && config && config.alwaysResetToDefaults) {
+    if (state.switchState === Characteristic.SwingMode.SWING_DISABLED && config && config.alwaysResetToDefaults) {
       this.setDefaults();
-      serviceManager.setCharacteristic(Characteristic.RotationSpeed, state.fanSpeed);
+      serviceManager.service.updateCharacteristic(Characteristic.RotationSpeed, state.fanSpeed)
+      serviceManager.service.updateCharacteristic(Characteristic.SwingMode, state.swingMode)
     }
 
     super.setSwitchState(hexData, previousValue);
@@ -28,7 +29,8 @@ class FanAccessory extends SwitchAccessory {
     // Reset the fan speed back to the default speed when turned off
     // This will also be called whenever homebridge is restarted
     if (config && config.alwaysResetToDefaults) {
-      state.fanSpeed = (config.defaultFanSpeed !== undefined) ? config.defaultFanSpeed : 100;
+      state.fanSpeed = (config.defaultFanSpeed !== undefined) ? config.defaultFanSpeed : 100
+      state.swingMode = config.defaultSwingMode === "on" ? Characteristic.SwingMode.SWING_ENABLED : Characteristic.SwingMode.SWING_DISABLED
     }
   }
 

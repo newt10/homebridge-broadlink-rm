@@ -72,6 +72,13 @@ config.json
 }
 ```
 
+##### Default swing mode
+When using alwaysResetToDefaults, you can add a parameter to let the system know the default oscillation mode.
+
+| key | description | example | default |
+|--|--|--|--|
+| defaultSwingMode | Oscillation mode corresponding to the default power on mode. Set this to 'on' if your power on IR code (data.on) starts the fan with oscillation enabled | on | off |
+
 #### Heater Cooler Accessory
 Implementation of heater cooler accessory specification as per Apple HAP. Heater cooler allows for better representation of standalone heaters and air-conditioners that support functions like 
 oscillation and fan speed.
