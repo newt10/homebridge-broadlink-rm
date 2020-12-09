@@ -3,6 +3,18 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
+## Release 3.6.22 - 2020-12-08
+### Added
+1. Support for recording default power on oscillation state for fan accessory.
+
+### Fixed
+1. Reset to default setting for fan updates Home app UI based on default state defined in config.json.
+2. HAP Warning for Characteristic.On in fan accessory.
+
+### Changed
+1. Improved changelog formatting based on keep your changelog.
+2. Documentation enhancements for fan accessory in a single document.
+
 ## Release 3.6.21 - 2020-11-03
 ### Added
 1. New accessory type - heater-cooler for better representation of standalone ACs and heaters
