@@ -47,37 +47,13 @@ Improves user experience of changing fan speeds to pre-defined steps in the Home
 
 <img src="https://j.gifs.com/L7oJQX.gif" alt="Home app fan speed UI in action" width="150"/>
 
-
-Add under the data section of the fan accessory in config.json as shown in the config-sample.json
-| key | description | example | default |
-|--|--|--|--|
-| stepSize | Increments of fan speed. This will update Home app UI so that fan speed increases in steps. If your fan support 4 speeds and the step size should be 100/4 = 25. | 25 | 1 |
-
 ##### Combined fan speed and swing modes
-Some fans (e.g. Lasko tower fan) with remotes that have a display, generate unique hex codes for a combination of each speed and swing mode. If you have such a device, you can record each hex code in the config.json as shown below.
-
-config.json
-```
-{
-	"name": "fan", // choose name of your choice
-	"type": "fan",
-	"swingOn": "on", // this has to be "on"
-	"swingOff": "off", // this has to be "off"
-	"data": {
-		"fanSpeed50": {
-			"swingOn": "26008a002828123f282a...", // replace with hex codes to turn on swing at the corresponding speed
-			"swingOff": "26008a002828123f282a..." // replace with hex codes to turn off swing at the corresponding speed
-		}
-	}
-}
-```
+Some fans (e.g. Lasko tower fan) with remotes that have a display, generate unique hex codes for a combination of each speed and swing mode. If you have such a device, you can record each hex code in the config.json.
 
 ##### Default swing mode
 When using alwaysResetToDefaults, you can add a parameter to let the system know the default oscillation mode.
 
-| key | description | example | default |
-|--|--|--|--|
-| defaultSwingMode | Oscillation mode corresponding to the default power on mode. Set this to 'on' if your power on IR code (data.on) starts the fan with oscillation enabled | on | off |
+For more details on how to configure a fan accessory please review the documentation [here](https://github.com/newt10/homebridge-broadlink-rm-enhanced/blob/master/docs/fan.md)
 
 #### Heater Cooler Accessory
 Implementation of heater cooler accessory specification as per Apple HAP. Heater cooler allows for better representation of standalone heaters and air-conditioners that support functions like 
