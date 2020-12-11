@@ -522,7 +522,7 @@ class HeaterCoolerAccessory extends BroadlinkRMAccessory {
     const isValidTemperature = (stringValue) => isFinite(Number(stringValue)) // Arrow function to check if supplied string is a int or float parseable number
 
     const dataObjectKeys = Object.keys(dataObject)
-    this.log(`Checking keys ${dataObjectKeys}`)
+    if (this.debugLevel >= 2) this.log(`Checking keys ${dataObjectKeys}`)
     if (!configObject.temperatureCodes && dataObjectKeys.every(isValidTemperature)) {
       configObject.temperatureCodes = true
     }
@@ -538,7 +538,7 @@ class HeaterCoolerAccessory extends BroadlinkRMAccessory {
 
 
     for (const [key, value] of Object.entries(dataObject)) {
-      this.log(`Going into key -> ${key}`)
+      if (this.debugLevel >= 2) this.log(`Going into key -> ${key}`)
       if (typeof value === 'object' && !Array.isArray(value)) {
         this.validateOptionalCharacteristics(value, configObject)
       }
