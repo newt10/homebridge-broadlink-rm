@@ -21,7 +21,7 @@ For updates to the plugin please review the [changelog](https://github.com/newt1
 
 ## Like this plugin?
 
-Please consider testing it and providing feedback. This project is built on top of the labor of many folks so please feel free to show your support to them as well.
+Please consider testing it and providing feedback. Supporting this project is defintely a lot of work due to the various types of devices that can be interfaced with this. If you are finding value from this plugin please consider supporting it by buying me a coffee using [Paypal](https://paypal.me/MahavirParekh).
 
 Thank you!
 
