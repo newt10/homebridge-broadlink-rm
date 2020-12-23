@@ -156,7 +156,7 @@ class HeaterCoolerAccessory extends BroadlinkRMAccessory {
     const { config, data, state } = this
     const { internalConfig } = config
     const { available } = internalConfig
-    const { targetHeaterCoolerState, heatingThresholdTemperature, coolingThresholdTemperature } = state
+    let { targetHeaterCoolerState, heatingThresholdTemperature, coolingThresholdTemperature } = state
 
     this.log(`Changing target state from ${previousValue} to ${targetHeaterCoolerState}`)
     switch (targetHeaterCoolerState) {
