@@ -3,6 +3,13 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
+## Release 3.6.23 - 2020-12-23
+### Fixed
+1. Bug in heater-cooler accessory due to const variable assignment when changing modes.
+
+### Changed
+1. Platform helper is integrated into the project for better maintainability.
+
 ## Release 3.6.22 - 2020-12-08
 ### Added
 1. Support for recording default power on oscillation state for fan accessory.

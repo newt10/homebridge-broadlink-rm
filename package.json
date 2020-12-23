@@ -1,6 +1,6 @@
 {
   "name": "homebridge-broadlink-rm-enhanced",
-  "version": "3.6.22",
+  "version": "3.6.23",
   "description": "Broadlink RM plugin (including the mini and pro) for homebridge: https://github.com/nfarina/homebridge",
   "license": "ISC",
   "scripts": {
@@ -30,10 +30,12 @@
     "chai": "^4.2.0",
     "find-key": "^2.0.1",
     "github-version-checker": "^1.2.0",
-    "homebridge-platform-helper": "1.2.1",
     "net-ping": "^1.2.3",
     "ping": "^0.2.2",
-    "uuid": "^3.3.3"
+    "uuid": "^3.3.3",
+    "mqtt": "^3.0.0",
+    "node-persist": "^2.0.10",
+    "semver": "^7.1.1"
   },
   "devDependencies": {
     "mocha": "^6.2.2",
