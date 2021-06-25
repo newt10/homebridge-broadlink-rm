@@ -144,6 +144,22 @@ class FanAccessory extends SwitchAccessory {
     return isNaN(step) || step > 100 || step < 1 ? 1 : step
   }
 
+  correctReloadedState (state) { 
+    const { config } = this
+    const { showRotationDirection, showSwingMode } = config
+  
+    state.active = state.active || Characteristic.Active.INACTIVE
+    if (showSwingMode) {
+      state.swingMode = state.swingMode || Characteristic.SwingMode.SWING_DISABLED
+    }
+    if (showRotationDirection) {
+      state.rotationDirection = state.RotationDirection || Characteristic.RotationDirection.CLOCKWISE
+    }
+    if (state.fanSpeed === undefined) {
+      state.fanSpeed = 100
+    }
+  }
+
   setupServiceManager () {
     const { config, data, name, serviceManagerType } = this;
     let { showSwingMode, showRotationDirection, hideSwingMode, hideRotationDirection } = config;
