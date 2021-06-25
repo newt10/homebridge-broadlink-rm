@@ -53,6 +53,10 @@ class SwitchAccessory extends BroadlinkRMAccessory {
     }
   }
 
+  correctReloadedState (state) {
+    state.switchState = state.switchState || false
+  }
+
   checkAutoOnOff () {
     this.reset();
     this.checkAutoOn();
