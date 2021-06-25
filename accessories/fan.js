@@ -6,19 +6,50 @@ class FanAccessory extends SwitchAccessory {
 
   async setSwitchState (hexData, previousValue) {
     const { config, state, serviceManager } = this;
+    const requestedValue = state.active // state is already set by main handler before this subhandler is called
 
-    if (!this.state.switchState) {
+    const { showRotationDirection, showSwingMode, availableFanSpeed } = config
+  
+    if (!state.active) {
       this.lastFanSpeed = undefined;
     }
 
     // Reset the fan speed back to the default speed when turned off
-    if (state.switchState === Characteristic.SwingMode.SWING_DISABLED && config && config.alwaysResetToDefaults) {
+    if (state.active === Characteristic.Active.INACTIVE
+      && config && config.alwaysResetToDefaults) {
       this.setDefaults();
-      serviceManager.service.updateCharacteristic(Characteristic.RotationSpeed, state.fanSpeed)
+      if (showSwingMode) {
+        serviceManager.service.updateCharacteristic(Characteristic.SwingMode, state.swingMode)
+      }
+      if (availableFanSpeed) {
+        serviceManager.service.updateCharacteristic(Characteristic.RotationSpeed, state.fanSpeed)
+      }
+      if (showRotationDirection) {
+        serviceManager.service.updateCharacteristic(Characteristic.RotationDirection, state.rotationDirection)
+      }
       serviceManager.service.updateCharacteristic(Characteristic.SwingMode, state.swingMode)
     }
 
     super.setSwitchState(hexData, previousValue);
+  }
+
+  didDefineFanSpeed() {
+    const { config } = this
+    const { data } = config
+    // Create an array of speeds specified in the data config
+    let foundFanSpeed = false;
+    const allHexKeys = Object.keys(data || {});
+
+    for (let index in allHexKeys) {
+      const key = allHexKeys[index]
+      const parts = key.split('fanSpeed');
+
+      if (parts.length === 2) {
+        foundFanSpeed = true
+        break
+      }
+    }
+    return foundFanSpeed
   }
 
   setDefaults () {
@@ -31,6 +62,11 @@ class FanAccessory extends SwitchAccessory {
     if (config && config.alwaysResetToDefaults) {
       state.fanSpeed = (config.defaultFanSpeed !== undefined) ? config.defaultFanSpeed : 100
       state.swingMode = config.defaultSwingMode === "on" ? Characteristic.SwingMode.SWING_ENABLED : Characteristic.SwingMode.SWING_DISABLED
+      if (config.defaultRotationDirection === undefined || config.defaultRotationDirection === "clockwise") {
+        state.rotationDirection =  Characteristic.RotationDirection.CLOCKWISE
+      } else {
+        state.rotationDirection = 	Characteristic.RotationDirection.COUNTER_CLOCKWISE
+      }
     }
   }
 
@@ -164,6 +200,8 @@ class FanAccessory extends SwitchAccessory {
     const { config, data, name, serviceManagerType } = this;
     let { showSwingMode, showRotationDirection, hideSwingMode, hideRotationDirection } = config;
     const { on, off, clockwise, counterClockwise, swingToggle, swingOn, swingOff } = data || {};
+
+    config.availableFanSpeed = this.didDefineFanSpeed()
 
     // Defaults
     if (showSwingMode !== false && hideSwingMode !== true) showSwingMode = true
