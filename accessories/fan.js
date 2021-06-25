@@ -29,6 +29,15 @@ class FanAccessory extends SwitchAccessory {
       }
     }
 
+    // If fanSpeeds are available and the 'on' hex code does not automatically set the last
+    // known state, then find the right hexCode to turn on the fan to last known state.
+    if (!config.alwaysResetToDefaults && !config.powerOnMemoryAvailable
+      && requestedValue === Characteristic.Active.ACTIVE
+      && config.availableFanSpeed) {
+      await this.setFanSpeed(hexData)
+      return
+    }
+
     super.setSwitchState(hexData, previousValue);
   }
 

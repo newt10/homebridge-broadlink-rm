@@ -10,6 +10,7 @@
 | defaultFanSpeed | Default fan speed to set when turning on device. | 50 | 100 |
 | defaultSwingMode | Default oscillation to show in Home app UI when turning on device. | on | off |
 | alwaysResetToDefaults | Reset the Home app UI to default state according to defaultFanSpeed and defaultSwingMode. | true | false |
+| powerOnMemoryAvailable | Set to true if your 'on' hex code automatically sets the fan to last known setting. | true | false |
 | *data* | Object with hex codes for device operation. | - | - |
 
 ### data
