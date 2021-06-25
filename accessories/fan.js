@@ -27,7 +27,6 @@ class FanAccessory extends SwitchAccessory {
       if (showRotationDirection) {
         serviceManager.service.updateCharacteristic(Characteristic.RotationDirection, state.rotationDirection)
       }
-      serviceManager.service.updateCharacteristic(Characteristic.SwingMode, state.swingMode)
     }
 
     super.setSwitchState(hexData, previousValue);
