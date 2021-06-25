@@ -3,6 +3,14 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
+## Release 3.7.0 - 2021-06-24
+### Fixed
+1. Bug in fan, switch and learn accessories sends undefined values for Characteristics until they are set due to user interaction.
+2. Fan accessory does not respect the alwaysResetToDefaults setting, fixed reseting of fan speed, rotation and swingMode to defaults.
+
+### Added
+1. Added new features for fan to power on to previous state by sending dynamic IR codes based on previous state.
+
 ## Release 3.6.23 - 2020-12-23
 ### Fixed
 1. Bug in heater-cooler accessory due to const variable assignment when changing modes.
